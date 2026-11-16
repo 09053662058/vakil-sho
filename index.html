@@ -12,16 +12,15 @@
 <script>
 (async function () {
   try {
-    const res = await fetch('./app.html', { cache: 'no-cache' });
-    if (!res.ok) throw new Error('missing app.html');
+    const res = await fetch('./lafzdar-v8%20(7).html', { cache: 'no-cache' });
+    if (!res.ok) throw new Error('missing app');
     const html = await res.text();
     document.open();
     document.write(html);
     document.close();
   } catch (e) {
     document.getElementById('s').innerHTML =
-      '<p>فایل <b>app.html</b> هنوز آپلود نشده است.</p>' +
-      '<p style="font-size:13px;line-height:1.8">همان فایل lafzdar-v8 را با نام <b>app.html</b> در ریشه ریپازیتوری آپلود کنید.</p>' +
+      '<p>خطا در بارگذاری برنامه</p>' +
       '<p style="font-size:12px;margin-top:18px">abolfazlhasankari · @lafzdar</p>';
   }
 })();
