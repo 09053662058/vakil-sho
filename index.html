@@ -3,18 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1120">
 <title>وکیل شو</title>
+<style>body{margin:0;background:#0b1120;color:#94a3b8;font-family:Tahoma,sans-serif;display:grid;place-items:center;min-height:100dvh}#s{text-align:center}.sp{width:40px;height:40px;border:3px solid #334155;border-top-color:#e2b340;border-radius:50%;animation:r 0.8s linear infinite;margin:0 auto 14px}@keyframes r{to{transform:rotate(360deg)}}</style>
 </head>
 <body>
-<p style="font-family:Tahoma,sans-serif;text-align:center;margin-top:48px;color:#334155">در حال بارگذاری وکیل شو...</p>
+<div id="s"><div class="sp"></div><div>در حال بارگذاری وکیل شو...</div></div>
 <script>
-fetch('./app.html').then(function(r){return r.text()}).then(function(html){
-  document.open();
-  document.write(html);
-  document.close();
-}).catch(function(){
-  document.body.innerHTML='<p style="text-align:center;font-family:Tahoma,sans-serif;margin-top:48px">برای اجرای کامل، فایل app.html را در همین ریپازیتوری قرار دهید.<br><br>abolfazlhasankari · @lafzdar</p>';
-});
+(async function(){
+  try {
+    const parts = await Promise.all([0,1,2].map(i => fetch('./parts/part' + i + '.txt').then(r => { if(!r.ok) throw new Error(i); return r.text(); }));
+    const html = parts.join('');
+    document.open();
+    document.write(html);
+    document.close();
+  } catch (e) {
+    document.getElementById('s').innerHTML = '<p>خطا در بارگذاری. فایل‌های parts را بررسی کنید.</p><p style="font-size:12px">abolfazlhasankari · @lafzdar</p>';
+  }
+})();
 </script>
 </body>
 </html>
