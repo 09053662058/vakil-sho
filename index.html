@@ -1,5 +1,20 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-<head><meta charset="UTF-8"><title>وکیل شو</title></head>
-<body><h1>در حال بارگذاری نسخه کامل...</h1><p>لطفاً فایل کامل را از گفتگو دانلود و جایگزین کنید یا به Grok بگویید دوباره آپلود کند.</p><p>abolfazlhasankari · @lafzdar</p></body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>وکیل شو</title>
+</head>
+<body>
+<p style="font-family:Tahoma,sans-serif;text-align:center;margin-top:48px;color:#334155">در حال بارگذاری وکیل شو...</p>
+<script>
+fetch('./app.html').then(function(r){return r.text()}).then(function(html){
+  document.open();
+  document.write(html);
+  document.close();
+}).catch(function(){
+  document.body.innerHTML='<p style="text-align:center;font-family:Tahoma,sans-serif;margin-top:48px">برای اجرای کامل، فایل app.html را در همین ریپازیتوری قرار دهید.<br><br>abolfazlhasankari · @lafzdar</p>';
+});
+</script>
+</body>
 </html>
