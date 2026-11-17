@@ -8,21 +8,26 @@
 <style>body{margin:0;background:#0b1120;color:#94a3b8;font-family:Tahoma,sans-serif;display:grid;place-items:center;min-height:100dvh}#s{text-align:center}.sp{width:40px;height:40px;border:3px solid #334155;border-top-color:#e2b340;border-radius:50%;animation:r .8s linear infinite;margin:0 auto 14px}@keyframes r{to{transform:rotate(360deg)}}</style>
 </head>
 <body>
-<div id="s"><div class="sp"></div><div>در حال بارگذاری وکیل شو...</div></div>
+<div id="s"><div class="sp"></div><div>در حال بارگذاری وکیل شو v9...</div></div>
 <script>
 (async function () {
-  try {
-    const res = await fetch('./lafzdar-v8%20(7).html', { cache: 'no-cache' });
-    if (!res.ok) throw new Error('missing app');
-    const html = await res.text();
-    document.open();
-    document.write(html);
-    document.close();
-  } catch (e) {
-    document.getElementById('s').innerHTML =
-      '<p>خطا در بارگذاری برنامه</p>' +
-      '<p style="font-size:12px;margin-top:18px">abolfazlhasankari · @lafzdar</p>';
+  var files = ['./lafzdar-v9.html', './lafzdar-v9%20(4).html', './app.html'];
+  for (var i = 0; i < files.length; i++) {
+    try {
+      var res = await fetch(files[i], { cache: 'no-cache' });
+      if (!res.ok) continue;
+      var html = await res.text();
+      if (html.indexOf('<!DOCTYPE') === -1 && html.indexOf('<html') === -1) continue;
+      document.open();
+      document.write(html);
+      document.close();
+      return;
+    } catch (e) {}
   }
+  document.getElementById('s').innerHTML =
+    '<p>فایل برنامه هنوز آپلود نشده</p>' +
+    '<p style="font-size:13px;line-height:1.9;margin-top:10px">فایل <b>lafzdar-v9.html</b> را در ریشه ریپازیتوری آپلود کنید.</p>' +
+    '<p style="font-size:12px;margin-top:16px">abolfazlhasankari · @lafzdar</p>';
 })();
 </script>
 </body>
